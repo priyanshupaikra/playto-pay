@@ -1,0 +1,11 @@
+django
+djangorestframework
+django-cors-headers
+celery
+redis
+psycopg2-binary
+django-environ          # for .env management
+whitenoise              # serve static files in production
+gunicorn                # production WSGI server
+django-celery-beat      # periodic tasks (idempotency reaper)
+django-celery-results   # optional: store task results in DB
