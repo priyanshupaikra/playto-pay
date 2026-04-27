@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Ledger from './pages/Ledger';
 import PayoutDetails from './pages/PayoutDetails';
@@ -9,12 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/ledger" element={<Ledger />} />
-        <Route path="/payouts" element={<PayoutHistory />} />
-        <Route path="/payouts/:id" element={<PayoutDetails />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="ledger" element={<Ledger />} />
+          <Route path="payouts" element={<PayoutHistory />} />
+          <Route path="payouts/:id" element={<PayoutDetails />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

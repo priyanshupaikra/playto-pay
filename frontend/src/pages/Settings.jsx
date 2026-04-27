@@ -3,37 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function Settings() {
   return (
-    <div  className="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary selection:text-on-primary">
+    <>
       
-{/* TopNavBar (Web Hidden, Mobile Show) */}
-<nav className="md:hidden flex justify-between items-center w-full px-8 h-16 bg-surface-container-lowest text-on-surface border-b border-primary docked full-width top-0 z-40 sticky">
-<div className="font-editorial-h2 text-editorial-h2 italic font-bold">Playto.</div>
-</nav>
-{/* SideNavBar (Web) */}
-<nav className="hidden md:flex flex-col w-48 shrink-0 h-screen border-r border-primary bg-surface-container-lowest text-on-surface z-40 sticky top-0">
-<div className="font-editorial-h2 text-editorial-h2 italic border-b border-primary p-4 pb-4">Playto.</div>
-<div className="px-4 py-2 font-data-md text-data-md uppercase text-outline tracking-tighter">FINANCIAL OPS</div>
-<div className="flex-grow flex flex-col mt-4">
-<Link  className="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" to="/dashboard">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>dashboard</span>
-                DASHBOARD
-            </Link>
-<Link  className="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" to="/payouts">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>payments</span>
-                PAYOUTS
-            </Link>
-<Link  className="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" to="/ledger">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>receipt_long</span>
-                LEDGER
-            </Link>
-<Link  className="flex items-center gap-2 px-4 py-3 bg-primary text-on-primary border-b border-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter" to="/settings">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>settings</span>
-                SETTINGS
-            </Link>
-</div>
-</nav>
-{/* Main Content Canvas */}
-<main className="flex-grow flex flex-col w-full min-h-screen relative overflow-x-hidden">
 {/* Page Header */}
 <header className="w-full border-b border-primary p-8 md:p-12">
 <h1 className="font-editorial-display text-editorial-display text-on-surface">Settings.</h1>
@@ -111,26 +82,9 @@ export default function Settings() {
 </div>
 </div>
 </div>
-</main>
-{/* BottomNavBar (Mobile) */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 bg-surface-container-lowest border-t border-primary overflow-hidden">
-<Link  className="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" to="/dashboard">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>dashboard</span>
-<span className="font-data-md text-[10px] uppercase mt-1">DASH</span>
-</Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" to="/payouts">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>payments</span>
-<span className="font-data-md text-[10px] uppercase mt-1">PAY</span>
-</Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" to="/ledger">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>receipt_long</span>
-<span className="font-data-md text-[10px] uppercase mt-1">LEDGER</span>
-</Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full bg-primary text-on-primary" to="/settings">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>settings</span>
-<span className="font-data-md text-[10px] uppercase mt-1">SET</span>
-</Link>
-</nav>
+
+      {/* BottomNavBar (Mobile) */}
+
 {/* Slide-over Panel (Add Bank Account) - Hidden by default, rendered for demonstration */}
 <div className="fixed inset-0 z-50 flex justify-end pointer-events-none hidden">
 {/* Backdrop */}
@@ -164,7 +118,6 @@ export default function Settings() {
 </div>
 </div>
 </div>
-
-    </div>
+    </>
   );
 }

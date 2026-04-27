@@ -3,41 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
   return (
-    <div  className="bg-surface text-on-surface antialiased min-h-screen">
+    <>
       
-{/* TopNavBar */}
-<header className="bg-white dark:bg-black text-black dark:text-white font-mono uppercase tracking-widest text-sm docked full-width top-0 border-b border-black dark:border-white flat no shadows flex justify-between items-center w-full px-8 h-16 fixed z-50">
-<div className="font-serif text-2xl font-bold italic text-black dark:text-white">
-            Playto.
-        </div>
-<nav className="hidden md:flex gap-8">
-<Link  className="underline decoration-2 underline-offset-4 font-bold hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" to="/dashboard">DASHBOARD</Link>
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" to="/payouts">PAYOUTS</Link>
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" to="/ledger">LEDGER</Link>
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" to="/settings">SETTINGS</Link>
-</nav>
-</header>
-{/* BottomNavBar (Mobile Only) */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 overflow-hidden bg-white dark:bg-black text-black dark:text-white font-mono uppercase text-[10px] fixed bottom-0 w-full border-t border-black dark:border-white flat no shadows">
-<Link  className="bg-black text-white dark:bg-white dark:text-black flex flex-col items-center justify-center h-full w-full hover:bg-black hover:text-white" to="/dashboard">
-<span className="material-symbols-outlined mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>dashboard</span>
-            DASH
-        </Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/payouts">
-<span className="material-symbols-outlined mb-1">payments</span>
-            PAY
-        </Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/ledger">
-<span className="material-symbols-outlined mb-1">receipt_long</span>
-            LEDGER
-        </Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/settings">
-<span className="material-symbols-outlined mb-1">settings</span>
-            SET
-        </Link>
-</nav>
-{/* Main Content Canvas */}
-<main className="pt-16 pb-16 md:pb-0 px-4 md:px-12 flex flex-col min-h-screen">
 {/* Hero Section */}
 <section className="flex flex-col md:flex-row border-b border-primary w-full">
 {/* Left: Hero Headline & Balance */}
@@ -132,7 +99,10 @@ export default function Dashboard() {
 </div>
 <div className="p-8 flex flex-col gap-8 flex-1">
 <div className="flex flex-col gap-2">
-<label className="font-ui-label-bold text-ui-label-bold uppercase">Amount</label>
+<div className="flex justify-between items-center">
+  <label className="font-ui-label-bold text-ui-label-bold uppercase">Amount (₹)</label>
+  <span className="text-[10px] opacity-50 uppercase">Stored as paise backend</span>
+</div>
 <input className="w-full border border-primary p-4 font-data-md text-data-md bg-transparent rounded-none focus:border-2 focus:border-primary placeholder-black/30" placeholder="₹0.00" type="text"/>
 </div>
 <div className="flex flex-col gap-2">
@@ -145,7 +115,7 @@ export default function Dashboard() {
 <div className="flex flex-col gap-2">
 <label className="font-ui-label-bold text-ui-label-bold uppercase">Idempotency Key</label>
 <div className="flex">
-<input className="w-full border border-primary border-r-0 p-4 font-data-md text-data-md bg-surface-container-low rounded-none opacity-70" readonly="" type="text" value="req_9xj28k"/>
+<input className="w-full border border-primary border-r-0 p-4 font-data-md text-data-md bg-surface-container-low rounded-none opacity-70 text-xs" readonly="" type="text" value="550e8400-e29b-41d4-a716-446655440000"/>
 <button className="border border-primary bg-white text-black hover:bg-black hover:text-white px-4 font-ui-label-bold text-ui-label-bold uppercase transition-none rounded-none whitespace-nowrap">
                                 REGENERATE
                             </button>
@@ -163,8 +133,47 @@ export default function Dashboard() {
 </div>
 </div>
 </section>
-</main>
+{/* Live Payout History Section */}
+<section className="flex flex-col border-b border-primary w-full">
+<div className="border-b border-primary p-4 bg-surface-container-highest flex justify-between items-center">
+<h2 className="font-data-lg text-data-lg uppercase">Live Payout Status</h2>
+<span className="font-data-md text-[10px] uppercase opacity-70 flex items-center gap-2">
+  <span className="w-2 h-2 rounded-full bg-status-completed animate-pulse"></span>
+  Updates every 5s
+</span>
+</div>
+<div className="w-full font-data-md text-data-md">
+<div className="grid grid-cols-4 bg-surface-container-low border-b border-primary p-4 text-xs font-ui-label-bold text-ui-label-bold uppercase">
+<div>ID / KEY</div>
+<div>AMOUNT</div>
+<div>STATUS</div>
+<div className="text-right">TIME</div>
+</div>
+{/* Processing Row */}
+<div className="grid grid-cols-4 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group">
+<div className="truncate pr-4 text-xs">550e8400...4001</div>
+<div>₹8,100.00</div>
+<div className="font-status-processing text-status-processing italic">Processing...</div>
+<div className="text-right opacity-70 group-hover:opacity-100">Oct 24, 14:28</div>
+</div>
+{/* Completed Row */}
+<div className="grid grid-cols-4 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group">
+<div className="truncate pr-4 text-xs">550e8400...4002</div>
+<div>₹42,500.00</div>
+<div className="font-status-completed text-status-completed uppercase">COMPLETED</div>
+<div className="text-right opacity-70 group-hover:opacity-100">Oct 24, 11:15</div>
+</div>
+{/* Failed Row */}
+<div className="grid grid-cols-4 items-center p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group opacity-50">
+<div className="truncate pr-4 text-xs line-through">550e8400...4003</div>
+<div className="line-through">₹5,000.00</div>
+<div className="font-data-md text-data-md uppercase line-through">FAILED</div>
+<div className="text-right line-through">Oct 23, 10:05</div>
+</div>
+</div>
+</section>
 
-    </div>
+      
+    </>
   );
 }

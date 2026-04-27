@@ -3,20 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function Ledger() {
   return (
-    <div  className="bg-white text-black min-h-screen flex flex-col font-data-md text-data-md selection:bg-black selection:text-white">
+    <>
       
-{/* TopNavBar (Shared Component) */}
-<nav className="bg-white dark:bg-black text-black dark:text-white font-mono uppercase tracking-widest text-sm border-b border-black dark:border-white flex justify-between items-center w-full px-8 h-16 shrink-0">
-<div className="font-serif text-2xl font-bold italic text-black dark:text-white">Playto.</div>
-<div className="flex space-x-8">
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 px-2 py-1 scale-100 active:bg-black active:text-white" to="/dashboard">DASHBOARD</Link>
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 px-2 py-1 scale-100 active:bg-black active:text-white" to="/payouts">PAYOUTS</Link>
-<Link  className="underline decoration-2 underline-offset-4 font-bold hover:bg-black hover:text-white transition-colors duration-75 px-2 py-1 scale-100 active:bg-black active:text-white" to="/ledger">LEDGER</Link>
-<Link  className="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 px-2 py-1 scale-100 active:bg-black active:text-white" to="/settings">SETTINGS</Link>
-</div>
-</nav>
-{/* Main Content Canvas */}
-<main className="flex-grow w-full px-12 pt-16 pb-24">
 {/* Header Section */}
 <header className="mb-12">
 <h1 className="font-editorial-display text-editorial-display mb-4">Ledger.</h1>
@@ -105,27 +93,9 @@ export default function Ledger() {
                 </button>
 </div>
 </div>
-</main>
-{/* BottomNavBar (Mobile Only) - Hidden on md up */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 overflow-hidden bg-white dark:bg-black border-t border-black dark:border-white">
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/dashboard">
-<span className="material-symbols-outlined mb-1">dashboard</span>
-<span className="font-mono uppercase text-[10px]">DASH</span>
-</Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/payouts">
-<span className="material-symbols-outlined mb-1">payments</span>
-<span className="font-mono uppercase text-[10px]">PAY</span>
-</Link>
-<Link  className="bg-black text-white dark:bg-white dark:text-black flex flex-col items-center justify-center h-full w-full" to="/ledger">
-<span className="material-symbols-outlined mb-1">receipt_long</span>
-<span className="font-mono uppercase text-[10px]">LEDGER</span>
-</Link>
-<Link  className="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" to="/settings">
-<span className="material-symbols-outlined mb-1">settings</span>
-<span className="font-mono uppercase text-[10px]">SET</span>
-</Link>
-</nav>
 
-    </div>
+      {/* BottomNavBar (Mobile Only) - Hidden on md up */}
+
+    </>
   );
 }

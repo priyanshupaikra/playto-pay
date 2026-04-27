@@ -3,12 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function PayoutDetails() {
   return (
-    <div  className="bg-surface-lowest text-on-surface min-h-screen flex flex-col">
+    <>
       
-{/* TopNavBar (Nav suppressed logic - this is a detail view, but we keep top nav for app context if desired, or suppress. The prompt says "Destination Rule: top level destinations". Since this is a detail page (/payouts/:id), we SHOULD suppress the nav cluster and just show a back button canvas, OR keep the shell. Let's provide the top nav but with a back button focus.) */}
-{/* Actually, prompt says: "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: ... Task-Focused: Any sub-page featuring a 'Close' or 'Back' action that implies a temporary departure from the main navigation flow." */}
-{/* So we suppress the Shared Component NavBars entirely. */}
-<main className="flex-grow flex flex-col pt-8">
 <div className="px-8 pb-8">
 <Link  className="inline-flex items-center space-x-2 text-on-surface opacity-50 hover:opacity-100 transition-opacity" to="/payouts">
 <span className="material-symbols-outlined text-sm">arrow_back</span>
@@ -76,8 +72,8 @@ export default function PayoutDetails() {
 </div>
 </div>
 </div>
-</main>
 
-    </div>
+      
+    </>
   );
 }
