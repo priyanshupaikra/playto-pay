@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payouts History - Playto.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;family=Lora:ital,wght@0,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "secondary": "#5d5f5f",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "on-primary-container": "#848484",
+                    "outline-variant": "#cfc4c5",
+                    "on-surface": "#1b1b1b",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary": "#000000",
+                    "on-surface-variant": "#4c4546",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-primary-fixed": "#1b1b1b",
+                    "primary": "#000000",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#616363",
+                    "outline": "#7e7576",
+                    "inverse-surface": "#303030",
+                    "primary-container": "#1b1b1b",
+                    "secondary-container": "#dfe0e0",
+                    "background": "#f9f9f9",
+                    "surface": "#f9f9f9",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#1b1b1b",
+                    "on-secondary-fixed-variant": "#454747",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1b1b1b",
+                    "inverse-primary": "#c6c6c6",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-tint": "#5e5e5e",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "surface-dim": "#dadada",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "on-tertiary-container": "#848484",
+                    "secondary-fixed": "#e2e2e2",
+                    "surface-variant": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "gutter": "0px",
+                    "row-height": "64px",
+                    "unit": "4px",
+                    "container-margin": "40px"
+            },
+            "fontFamily": {
+                    "editorial-h1": [
+                            "Lora"
+                    ],
+                    "ui-label-bold": [
+                            "Inter"
+                    ],
+                    "data-md": [
+                            "JetBrains Mono"
+                    ],
+                    "status-completed": [
+                            "JetBrains Mono"
+                    ],
+                    "status-processing": [
+                            "JetBrains Mono"
+                    ],
+                    "status-pending": [
+                            "JetBrains Mono"
+                    ],
+                    "editorial-display": [
+                            "Lora"
+                    ],
+                    "data-lg": [
+                            "JetBrains Mono"
+                    ],
+                    "editorial-h2": [
+                            "Lora"
+                    ],
+                    "ui-label-reg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "editorial-h1": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "ui-label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "data-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "status-completed": [
+                            "12px",
+                            {
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "status-processing": [
+                            "12px",
+                            {
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "status-pending": [
+                            "12px",
+                            {
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "editorial-display": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "data-lg": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "editorial-h2": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "ui-label-reg": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-ui-label-reg antialiased min-h-screen border-x border-primary max-w-[1920px] mx-auto">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest text-on-surface flex justify-between items-center w-full px-8 h-16 docked full-width top-0 border-b border-primary">
+<div class="font-editorial-h2 text-editorial-h2 font-bold italic">Playto.</div>
+<div class="hidden md:flex gap-8">
+<a class="font-data-md text-data-md uppercase tracking-widest text-on-surface opacity-70 hover:bg-primary hover:text-on-primary transition-colors duration-75 px-2 py-1" href="#">DASHBOARD</a>
+<a class="font-data-md text-data-md uppercase tracking-widest text-on-surface underline decoration-2 underline-offset-4 font-bold px-2 py-1" href="#">PAYOUTS</a>
+<a class="font-data-md text-data-md uppercase tracking-widest text-on-surface opacity-70 hover:bg-primary hover:text-on-primary transition-colors duration-75 px-2 py-1" href="#">LEDGER</a>
+<a class="font-data-md text-data-md uppercase tracking-widest text-on-surface opacity-70 hover:bg-primary hover:text-on-primary transition-colors duration-75 px-2 py-1" href="#">SETTINGS</a>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<div class="hidden md:flex flex-col w-48 shrink-0 h-screen border-r border-primary bg-surface-container-lowest fixed left-0 top-0 pt-16 z-[-1]">
+<div class="p-4 border-b border-primary">
+<div class="font-editorial-h2 text-editorial-h2 pb-4">PLAYTO</div>
+<div class="font-data-md text-data-md text-xs">FINANCIAL OPS</div>
+</div>
+<nav class="flex flex-col flex-1">
+<a class="flex items-center gap-4 px-4 py-3 border-b border-primary text-on-surface hover:bg-primary hover:text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 border-b border-primary bg-primary text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+                PAYOUTS
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 border-b border-primary text-on-surface hover:bg-primary hover:text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                LEDGER
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 border-b border-primary text-on-surface hover:bg-primary hover:text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                SETTINGS
+            </a>
+</nav>
+</div>
+<!-- Main Content Canvas -->
+<main class="md:ml-48 min-h-[calc(100vh-64px)] w-full pb-32 md:pb-0 px-12 pt-12">
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-primary pb-8">
+<h1 class="font-editorial-display text-editorial-display">Payout History.</h1>
+<div class="font-data-md text-data-md opacity-70 mt-4 md:mt-0">Live updates every 10s</div>
+</header>
+<!-- Filters -->
+<div class="flex flex-wrap gap-8 mb-8 font-data-md text-data-md uppercase text-xs">
+<button class="underline decoration-2 underline-offset-4 font-bold text-primary">ALL</button>
+<button class="opacity-70 hover:opacity-100 hover:text-primary transition-opacity">PENDING</button>
+<button class="opacity-70 hover:opacity-100 hover:text-primary transition-opacity">PROCESSING</button>
+<button class="opacity-70 hover:opacity-100 hover:text-primary transition-opacity">COMPLETED</button>
+<button class="opacity-70 hover:opacity-100 hover:text-primary transition-opacity">FAILED</button>
+</div>
+<!-- Data Table -->
+<div class="w-full border border-primary font-data-md text-data-md">
+<!-- Table Header -->
+<div class="grid grid-cols-5 bg-surface-container-lowest border-b border-primary p-4 text-xs font-ui-label-bold text-ui-label-bold uppercase">
+<div>ID</div>
+<div>BANK ACCOUNT</div>
+<div>AMOUNT</div>
+<div>STATUS</div>
+<div class="text-right">DATE</div>
+</div>
+<!-- Rows -->
+<div class="flex flex-col">
+<!-- Completed Row -->
+<div class="grid grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group">
+<div class="truncate pr-4">PO_09218A</div>
+<div class="truncate pr-4">JPM Chase ****4912</div>
+<div>$42,500.00</div>
+<div class="font-status-completed text-status-completed uppercase">COMPLETED</div>
+<div class="text-right opacity-70 group-hover:opacity-100">Oct 12, 14:32</div>
+</div>
+<!-- Processing Row -->
+<div class="grid grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group">
+<div class="truncate pr-4">PO_09218B</div>
+<div class="truncate pr-4">Wells Fargo ****1190</div>
+<div>$8,100.00</div>
+<div class="font-status-processing text-status-processing italic">Processing...</div>
+<div class="text-right opacity-70 group-hover:opacity-100">Oct 12, 14:28</div>
+</div>
+<!-- Pending Row -->
+<div class="grid grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group">
+<div class="truncate pr-4">PO_09218C</div>
+<div class="truncate pr-4">Bank of America ****8821</div>
+<div>$12,450.00</div>
+<div class="font-status-pending text-status-pending opacity-50 group-hover:opacity-100">Pending</div>
+<div class="text-right opacity-70 group-hover:opacity-100">Oct 12, 14:15</div>
+</div>
+<!-- Expanded Row Example (Processing) -->
+<div class="flex flex-col border-b border-primary border-opacity-10">
+<div class="grid grid-cols-5 items-center p-4 bg-surface-container-high border-b border-primary border-opacity-10 cursor-pointer">
+<div class="truncate pr-4 font-bold">PO_09218D</div>
+<div class="truncate pr-4">Citibank ****3314</div>
+<div class="font-bold">$150,000.00</div>
+<div class="font-status-processing text-status-processing italic">Processing...</div>
+<div class="text-right">Oct 12, 14:00</div>
+</div>
+<!-- Expanded Content -->
+<div class="p-8 bg-surface-container-lowest grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Details -->
+<div class="flex flex-col gap-4">
+<div class="font-ui-label-bold text-ui-label-bold uppercase border-b border-primary pb-2">Attempt History</div>
+<div class="grid grid-cols-2 gap-2 text-xs">
+<span class="opacity-70">Initiated:</span> <span>System User</span>
+<span class="opacity-70">Source:</span> <span>Main Operating Acct</span>
+<span class="opacity-70">Attempts:</span> <span>1 / 3</span>
+<span class="opacity-70">Est. Settlement:</span> <span>Oct 13, EOD</span>
+</div>
+</div>
+<!-- Stepper -->
+<div class="flex flex-col gap-4 justify-center">
+<div class="flex items-center justify-between relative">
+<!-- Track -->
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary opacity-20 -z-10"></div>
+<div class="absolute top-1/2 left-0 w-1/2 h-[1px] bg-primary -z-10"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2">
+<div class="w-2 h-2 bg-primary border border-primary"></div>
+<span class="text-[10px] font-bold uppercase">Created</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2">
+<div class="w-2 h-2 bg-surface-container-lowest border border-primary border-2"></div>
+<span class="text-[10px] italic">Processing</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2">
+<div class="w-2 h-2 bg-surface-container-lowest border border-primary opacity-20"></div>
+<span class="text-[10px] opacity-50 uppercase">Completed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Failed Row -->
+<div class="grid grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group opacity-50">
+<div class="truncate pr-4 line-through">PO_09218E</div>
+<div class="truncate pr-4 line-through">Silicon Valley Bank ****0012</div>
+<div class="line-through">$5,000.00</div>
+<div class="font-data-md text-data-md uppercase line-through">FAILED</div>
+<div class="text-right line-through">Oct 12, 10:05</div>
+</div>
+<!-- Completed Row -->
+<div class="grid grid-cols-5 items-center p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group">
+<div class="truncate pr-4">PO_09217A</div>
+<div class="truncate pr-4">Goldman Sachs ****7765</div>
+<div>$92,000.00</div>
+<div class="font-status-completed text-status-completed uppercase">COMPLETED</div>
+<div class="text-right opacity-70 group-hover:opacity-100">Oct 11, 16:45</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 overflow-hidden bg-surface-container-lowest text-on-surface border-t border-primary">
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface font-data-md text-[10px] uppercase" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1">dashboard</span>
+            DASH
+        </a>
+<a class="bg-primary text-on-primary flex flex-col items-center justify-center h-full w-full font-data-md text-[10px] uppercase" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1">payments</span>
+            PAY
+        </a>
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface font-data-md text-[10px] uppercase" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1">receipt_long</span>
+            LEDGER
+        </a>
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface font-data-md text-[10px] uppercase" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1">settings</span>
+            SET
+        </a>
+</div>
+</body></html>

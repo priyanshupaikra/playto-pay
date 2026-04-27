@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playto. Payout Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;family=Lora:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "secondary": "#5d5f5f",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "on-primary-container": "#848484",
+                      "outline-variant": "#cfc4c5",
+                      "on-surface": "#1b1b1b",
+                      "surface-bright": "#f9f9f9",
+                      "tertiary": "#000000",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-primary-fixed": "#1b1b1b",
+                      "primary": "#000000",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1f1f1",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-container": "#616363",
+                      "outline": "#7e7576",
+                      "inverse-surface": "#303030",
+                      "primary-container": "#1b1b1b",
+                      "secondary-container": "#dfe0e0",
+                      "background": "#f9f9f9",
+                      "surface": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#1b1b1b",
+                      "on-secondary-fixed-variant": "#454747",
+                      "surface-container-low": "#f3f3f3",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-background": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-tint": "#5e5e5e",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "surface-dim": "#dadada",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary-container": "#848484",
+                      "secondary-fixed": "#e2e2e2",
+                      "surface-variant": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "0px",
+                      "row-height": "64px",
+                      "unit": "4px",
+                      "container-margin": "40px"
+              },
+              "fontFamily": {
+                      "editorial-h1": [
+                              "Lora"
+                      ],
+                      "ui-label-bold": [
+                              "Inter"
+                      ],
+                      "data-md": [
+                              "JetBrains Mono"
+                      ],
+                      "status-completed": [
+                              "JetBrains Mono"
+                      ],
+                      "status-processing": [
+                              "JetBrains Mono"
+                      ],
+                      "status-pending": [
+                              "JetBrains Mono"
+                      ],
+                      "editorial-display": [
+                              "Lora"
+                      ],
+                      "data-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "editorial-h2": [
+                              "Lora"
+                      ],
+                      "ui-label-reg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "editorial-h1": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status-completed": [
+                              "12px",
+                              {
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "status-processing": [
+                              "12px",
+                              {
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status-pending": [
+                              "12px",
+                              {
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "editorial-display": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "editorial-h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label-reg": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Brutalist reset for forms */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: none !important;
+            border-color: #000 !important;
+            border-width: 2px !important;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-black text-black dark:text-white font-mono uppercase tracking-widest text-sm docked full-width top-0 border-b border-black dark:border-white flat no shadows flex justify-between items-center w-full px-8 h-16 fixed z-50">
+<div class="font-serif text-2xl font-bold italic text-black dark:text-white">
+            Playto.
+        </div>
+<nav class="hidden md:flex gap-8">
+<a class="underline decoration-2 underline-offset-4 font-bold hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" href="#">DASHBOARD</a>
+<a class="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" href="#">PAYOUTS</a>
+<a class="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" href="#">LEDGER</a>
+<a class="text-black dark:text-white opacity-70 hover:bg-black hover:text-white transition-colors duration-75 scale-100 active:bg-black active:text-white px-2 py-1" href="#">SETTINGS</a>
+</nav>
+</header>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 overflow-hidden bg-white dark:bg-black text-black dark:text-white font-mono uppercase text-[10px] fixed bottom-0 w-full border-t border-black dark:border-white flat no shadows">
+<a class="bg-black text-white dark:bg-white dark:text-black flex flex-col items-center justify-center h-full w-full hover:bg-black hover:text-white" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+            DASH
+        </a>
+<a class="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" href="#">
+<span class="material-symbols-outlined mb-1">payments</span>
+            PAY
+        </a>
+<a class="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+            LEDGER
+        </a>
+<a class="flex flex-col items-center justify-center h-full w-full text-black dark:text-white hover:bg-black hover:text-white" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+            SET
+        </a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-16 pb-16 md:pb-0 px-4 md:px-12 flex flex-col min-h-screen">
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row border-b border-primary w-full">
+<!-- Left: Hero Headline & Balance -->
+<div class="w-full md:w-1/2 p-4 md:p-12 border-b md:border-b-0 md:border-r border-primary flex flex-col justify-center">
+<h1 class="font-editorial-display text-editorial-display tracking-tighter mb-12 break-words">Payout Engine.</h1>
+<div class="mt-auto border border-primary p-6 hover:bg-primary hover:text-on-primary transition-none group cursor-default">
+<span class="font-data-md text-data-md block mb-4 group-hover:text-on-primary opacity-70 group-hover:opacity-100">merchant balance</span>
+<span class="font-data-lg text-[48px] leading-none block mb-2">₹4,320.00</span>
+<span class="font-data-md text-data-md block opacity-50 group-hover:opacity-100">available · ₹1,200.00 held</span>
+</div>
+</div>
+<!-- Right: Stats Grid -->
+<div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2">
+<!-- Stat 01 -->
+<div class="border-b sm:border-r border-primary p-8 hover:bg-primary hover:text-on-primary transition-none flex flex-col justify-between group cursor-default min-h-[200px]">
+<span class="font-data-md text-data-md block opacity-50 group-hover:opacity-100 mb-8">01</span>
+<div>
+<h2 class="font-editorial-h2 text-editorial-h2 mb-2">Total Credits</h2>
+<span class="font-data-lg text-data-lg block font-bold group-hover:text-on-primary">₹12,450.00</span>
+</div>
+</div>
+<!-- Stat 02 -->
+<div class="border-b border-primary p-8 hover:bg-primary hover:text-on-primary transition-none flex flex-col justify-between group cursor-default min-h-[200px]">
+<span class="font-data-md text-data-md block opacity-50 group-hover:opacity-100 mb-8">02</span>
+<div>
+<h2 class="font-editorial-h2 text-editorial-h2 mb-2">Total Withdrawals</h2>
+<span class="font-data-lg text-data-lg block font-bold group-hover:text-on-primary">-₹8,130.00</span>
+</div>
+</div>
+<!-- Stat 03 -->
+<div class="border-b sm:border-b-0 sm:border-r border-primary p-8 hover:bg-primary hover:text-on-primary transition-none flex flex-col justify-between group cursor-default min-h-[200px]">
+<span class="font-data-md text-data-md block opacity-50 group-hover:opacity-100 mb-8">03</span>
+<div>
+<h2 class="font-editorial-h2 text-editorial-h2 mb-2">Pending Payouts</h2>
+<span class="font-data-lg text-data-lg block font-bold group-hover:text-on-primary">2</span>
+</div>
+</div>
+<!-- Stat 04 -->
+<div class="p-8 hover:bg-primary hover:text-on-primary transition-none flex flex-col justify-between group cursor-default min-h-[200px]">
+<span class="font-data-md text-data-md block opacity-50 group-hover:opacity-100 mb-8">04</span>
+<div>
+<h2 class="font-editorial-h2 text-editorial-h2 mb-2">Net Growth</h2>
+<span class="font-data-lg text-data-lg block font-bold group-hover:text-on-primary">+14.2%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Lower Section: Transactions & Actions -->
+<section class="flex flex-col md:flex-row flex-1">
+<!-- Recent Transactions -->
+<div class="w-full md:w-[60%] flex flex-col">
+<div class="border-b border-primary p-4 bg-primary text-on-primary">
+<h2 class="font-data-lg text-data-lg uppercase">Recent Transactions</h2>
+</div>
+<div class="flex-1">
+<!-- Table Header -->
+<div class="grid grid-cols-4 border-b border-primary p-4 bg-surface-container-low">
+<span class="font-ui-label-bold text-ui-label-bold uppercase">Date</span>
+<span class="font-ui-label-bold text-ui-label-bold uppercase col-span-2">Type</span>
+<span class="font-ui-label-bold text-ui-label-bold uppercase text-right">Amount</span>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-4 border-b border-primary p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group items-center">
+<span class="font-data-md text-data-md">Oct 24</span>
+<span class="font-data-md text-data-md font-bold col-span-2">CREDIT</span>
+<span class="font-data-md text-data-md text-right">+₹5,000.00</span>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-4 border-b border-primary p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group items-center">
+<span class="font-data-md text-data-md">Oct 23</span>
+<span class="font-data-md text-data-md opacity-50 group-hover:opacity-100 col-span-2">DEBIT</span>
+<span class="font-data-md text-data-md text-right opacity-50 group-hover:opacity-100">-₹1,200.00</span>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-4 border-b border-primary p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group items-center">
+<span class="font-data-md text-data-md">Oct 21</span>
+<span class="font-data-md text-data-md font-bold col-span-2">CREDIT</span>
+<span class="font-data-md text-data-md text-right">+₹2,500.00</span>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-4 border-b border-primary p-4 hover:bg-primary hover:text-on-primary transition-none cursor-default group items-center">
+<span class="font-data-md text-data-md">Oct 19</span>
+<span class="font-data-md text-data-md opacity-50 group-hover:opacity-100 col-span-2">DEBIT</span>
+<span class="font-data-md text-data-md text-right opacity-50 group-hover:opacity-100">-₹500.00</span>
+</div>
+</div>
+</div>
+<!-- Withdraw Funds Form -->
+<div class="w-full md:w-[40%] border-l md:border-l-primary flex flex-col">
+<div class="border-b border-t md:border-t-0 border-primary p-4 bg-surface-container-highest">
+<h2 class="font-data-lg text-data-lg uppercase">Withdraw Funds</h2>
+</div>
+<div class="p-8 flex flex-col gap-8 flex-1">
+<div class="flex flex-col gap-2">
+<label class="font-ui-label-bold text-ui-label-bold uppercase">Amount</label>
+<input class="w-full border border-primary p-4 font-data-md text-data-md bg-transparent rounded-none focus:border-2 focus:border-primary placeholder-black/30" placeholder="₹0.00" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-ui-label-bold text-ui-label-bold uppercase">Destination Bank</label>
+<select class="w-full border border-primary p-4 font-data-md text-data-md bg-transparent rounded-none focus:border-2 focus:border-primary cursor-pointer">
+<option>HDFC Bank (****1234)</option>
+<option>SBI (****5678)</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-ui-label-bold text-ui-label-bold uppercase">Idempotency Key</label>
+<div class="flex">
+<input class="w-full border border-primary border-r-0 p-4 font-data-md text-data-md bg-surface-container-low rounded-none opacity-70" readonly="" type="text" value="req_9xj28k"/>
+<button class="border border-primary bg-white text-black hover:bg-black hover:text-white px-4 font-ui-label-bold text-ui-label-bold uppercase transition-none rounded-none whitespace-nowrap">
+                                REGENERATE
+                            </button>
+</div>
+</div>
+<div class="mt-auto pt-8 border-t border-primary border-dashed">
+<button class="w-full border border-primary bg-primary text-on-primary hover:bg-white hover:text-primary p-6 font-ui-label-bold text-ui-label-bold uppercase transition-none rounded-none text-center flex justify-between items-center group">
+<span>REQUEST PAYOUT</span>
+<span class="material-symbols-outlined transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+<p class="font-data-md text-[10px] uppercase text-center mt-4 opacity-50 tracking-widest">
+                            FUNDS HELD UNTIL SETTLEMENT
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

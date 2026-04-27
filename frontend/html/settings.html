@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playto. - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;family=Lora:ital,wght@0,400;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "secondary": "#5d5f5f",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "on-primary-container": "#848484",
+                      "outline-variant": "#cfc4c5",
+                      "on-surface": "#1b1b1b",
+                      "surface-bright": "#f9f9f9",
+                      "tertiary": "#000000",
+                      "on-surface-variant": "#4c4546",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-primary-fixed": "#1b1b1b",
+                      "primary": "#000000",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1f1f1",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-container": "#616363",
+                      "outline": "#7e7576",
+                      "inverse-surface": "#303030",
+                      "primary-container": "#1b1b1b",
+                      "secondary-container": "#dfe0e0",
+                      "background": "#f9f9f9",
+                      "surface": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#1b1b1b",
+                      "on-secondary-fixed-variant": "#454747",
+                      "surface-container-low": "#f3f3f3",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-background": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-tint": "#5e5e5e",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "surface-dim": "#dadada",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary-container": "#848484",
+                      "secondary-fixed": "#e2e2e2",
+                      "surface-variant": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "0px",
+                      "row-height": "64px",
+                      "unit": "4px",
+                      "container-margin": "40px"
+              },
+              "fontFamily": {
+                      "editorial-h1": [
+                              "Lora"
+                      ],
+                      "ui-label-bold": [
+                              "Inter"
+                      ],
+                      "data-md": [
+                              "JetBrains Mono"
+                      ],
+                      "status-completed": [
+                              "JetBrains Mono"
+                      ],
+                      "status-processing": [
+                              "JetBrains Mono"
+                      ],
+                      "status-pending": [
+                              "JetBrains Mono"
+                      ],
+                      "editorial-display": [
+                              "Lora"
+                      ],
+                      "data-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "editorial-h2": [
+                              "Lora"
+                      ],
+                      "ui-label-reg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "editorial-h1": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status-completed": [
+                              "12px",
+                              {
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "status-processing": [
+                              "12px",
+                              {
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "status-pending": [
+                              "12px",
+                              {
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "editorial-display": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "editorial-h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label-reg": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar (Web Hidden, Mobile Show) -->
+<nav class="md:hidden flex justify-between items-center w-full px-8 h-16 bg-surface-container-lowest text-on-surface border-b border-primary docked full-width top-0 z-40 sticky">
+<div class="font-editorial-h2 text-editorial-h2 italic font-bold">Playto.</div>
+</nav>
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col w-48 shrink-0 h-screen border-r border-primary bg-surface-container-lowest text-on-surface z-40 sticky top-0">
+<div class="font-editorial-h2 text-editorial-h2 italic border-b border-primary p-4 pb-4">Playto.</div>
+<div class="px-4 py-2 font-data-md text-data-md uppercase text-outline tracking-tighter">FINANCIAL OPS</div>
+<div class="flex-grow flex flex-col mt-4">
+<a class="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+                PAYOUTS
+            </a>
+<a class="flex items-center gap-2 px-4 py-3 text-on-surface border-b border-primary hover:bg-primary hover:text-on-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter transition-none" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+                LEDGER
+            </a>
+<a class="flex items-center gap-2 px-4 py-3 bg-primary text-on-primary border-b border-primary font-ui-label-bold text-ui-label-bold uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+                SETTINGS
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col w-full min-h-screen relative overflow-x-hidden">
+<!-- Page Header -->
+<header class="w-full border-b border-primary p-8 md:p-12">
+<h1 class="font-editorial-display text-editorial-display text-on-surface">Settings.</h1>
+</header>
+<div class="flex-grow grid grid-cols-1 lg:grid-cols-12 w-full">
+<!-- Settings Navigation (In-page) -->
+<div class="lg:col-span-3 border-r border-primary border-b lg:border-b-0 hidden lg:block">
+<nav class="flex flex-col">
+<a class="p-4 border-b border-primary font-ui-label-bold text-ui-label-bold uppercase hover:bg-primary hover:text-on-primary transition-none flex justify-between items-center" href="#">
+                        PROFILE
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="p-4 border-b border-primary bg-primary text-on-primary font-ui-label-bold text-ui-label-bold uppercase flex justify-between items-center" href="#">
+                        BANK ACCOUNTS
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="p-4 border-b border-primary font-ui-label-bold text-ui-label-bold uppercase hover:bg-primary hover:text-on-primary transition-none flex justify-between items-center" href="#">
+                        API KEYS
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="p-4 border-b border-primary font-ui-label-bold text-ui-label-bold uppercase hover:bg-primary hover:text-on-primary transition-none flex justify-between items-center text-error hover:bg-error hover:text-on-error" href="#">
+                        DANGER ZONE
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</nav>
+</div>
+<!-- Settings Content -->
+<div class="lg:col-span-9 flex flex-col">
+<!-- Section Header -->
+<div class="p-6 md:p-8 border-b border-primary bg-surface-container-low">
+<h2 class="font-data-lg text-data-lg uppercase text-on-surface">BANK ACCOUNTS</h2>
+<p class="font-data-md text-data-md text-outline mt-2">Manage your payout destinations. Primary accounts are used by default.</p>
+</div>
+<!-- Accounts List -->
+<div class="flex flex-col">
+<!-- Account Item 1 (Primary) -->
+<div class="border-b border-primary p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-primary hover:text-on-primary group transition-none cursor-pointer">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<h3 class="font-editorial-h2 text-editorial-h2 group-hover:text-on-primary">JPMorgan Chase</h3>
+<span class="border border-primary group-hover:border-on-primary px-2 py-0.5 font-status-completed text-status-completed group-hover:text-on-primary">PRIMARY</span>
+</div>
+<div class="font-data-md text-data-md text-on-surface-variant group-hover:text-on-primary flex gap-4">
+<span>**** **** **** 4920</span>
+<span>IFSC: JPMC0000123</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-ui-label-bold text-ui-label-bold uppercase underline hover:no-underline text-error group-hover:text-error-container">REMOVE</button>
+</div>
+</div>
+<!-- Account Item 2 -->
+<div class="border-b border-primary p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-primary hover:text-on-primary group transition-none cursor-pointer">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<h3 class="font-editorial-h2 text-editorial-h2 group-hover:text-on-primary">Silicon Valley Bank</h3>
+</div>
+<div class="font-data-md text-data-md text-on-surface-variant group-hover:text-on-primary flex gap-4">
+<span>**** **** **** 8812</span>
+<span>IFSC: SVBK0000012</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-ui-label-bold text-ui-label-bold uppercase underline hover:no-underline group-hover:text-on-primary">SET PRIMARY</button>
+<button class="font-ui-label-bold text-ui-label-bold uppercase underline hover:no-underline text-error group-hover:text-error-container">REMOVE</button>
+</div>
+</div>
+<!-- Add New Button Row -->
+<div class="p-6 md:p-8">
+<button class="w-full border border-primary p-4 font-ui-label-bold text-ui-label-bold uppercase flex justify-between items-center hover:bg-primary hover:text-on-primary transition-none">
+<span>ADD BANK ACCOUNT</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around z-50 bg-surface-container-lowest border-t border-primary overflow-hidden">
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-data-md text-[10px] uppercase mt-1">DASH</span>
+</a>
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-data-md text-[10px] uppercase mt-1">PAY</span>
+</a>
+<a class="flex flex-col items-center justify-center h-full w-full text-on-surface hover:bg-primary hover:text-on-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-data-md text-[10px] uppercase mt-1">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center h-full w-full bg-primary text-on-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-data-md text-[10px] uppercase mt-1">SET</span>
+</a>
+</nav>
+<!-- Slide-over Panel (Add Bank Account) - Hidden by default, rendered for demonstration -->
+<div class="fixed inset-0 z-50 flex justify-end pointer-events-none hidden">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-surface-container-highest/80 backdrop-blur-sm pointer-events-auto"></div>
+<!-- Panel -->
+<div class="relative w-full max-w-md bg-surface-container-lowest h-full border-l border-primary shadow-2xl flex flex-col pointer-events-auto">
+<div class="flex justify-between items-center p-6 border-b border-primary">
+<h2 class="font-data-lg text-data-lg uppercase text-on-surface">ADD BANK ACCOUNT</h2>
+<button class="font-ui-label-bold text-ui-label-bold uppercase flex items-center gap-1 hover:text-outline transition-none">
+                    X CLOSE
+                </button>
+</div>
+<div class="flex-grow p-6 overflow-y-auto flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-data-md text-data-md uppercase text-on-surface">Account Holder Name</label>
+<input class="w-full border border-primary p-3 bg-transparent font-data-md text-data-md focus:border-primary focus:ring-0 focus:border-b-2 placeholder:text-outline placeholder:opacity-50 transition-none rounded-none" placeholder="PLAYTO LLC" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-data-md text-data-md uppercase text-on-surface">Account Number</label>
+<input class="w-full border border-primary p-3 bg-transparent font-data-md text-data-md focus:border-primary focus:ring-0 focus:border-b-2 placeholder:text-outline placeholder:opacity-50 transition-none rounded-none" placeholder="0000000000" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-data-md text-data-md uppercase text-on-surface">IFSC Code</label>
+<input class="w-full border border-primary p-3 bg-transparent font-data-md text-data-md focus:border-primary focus:ring-0 focus:border-b-2 placeholder:text-outline placeholder:opacity-50 transition-none rounded-none" placeholder="ABCD0001234" type="text"/>
+</div>
+</div>
+<div class="p-6 border-t border-primary bg-surface-container-lowest mt-auto">
+<button class="w-full bg-primary text-on-primary border border-primary p-4 font-ui-label-bold text-ui-label-bold uppercase flex justify-center items-center gap-2 hover:bg-surface-container-lowest hover:text-on-surface transition-none">
+                    SAVE BANK ACCOUNT <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
