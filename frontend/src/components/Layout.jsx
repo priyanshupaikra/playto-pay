@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { useMerchant } from '../context/MerchantContext';
 
 export default function Layout() {
   const location = useLocation();
+  const { merchants, currentMerchant, switchMerchant, loading } = useMerchant();
 
   const getLinkClass = (path, isMobile = false) => {
     const isActive = location.pathname.startsWith(path);
@@ -20,6 +22,14 @@ export default function Layout() {
     return "flex items-center gap-4 px-4 py-3 border-b border-primary text-on-surface hover:bg-primary hover:text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter transition-colors";
   };
 
+  if (loading) {
+    return (
+      <div className="bg-surface-container-lowest text-on-surface min-h-screen flex items-center justify-center">
+        <span className="font-data-lg text-data-lg uppercase tracking-widest animate-pulse">Loading...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-surface-container-lowest text-on-surface font-ui-label-reg antialiased min-h-screen border-x border-primary max-w-[1920px] mx-auto flex flex-col md:flex-row">
       
@@ -29,6 +39,22 @@ export default function Layout() {
           <div className="font-editorial-h2 text-editorial-h2 pb-4">PLAYTO</div>
           <div className="font-data-md text-data-md text-xs">FINANCIAL OPS</div>
         </div>
+
+        {/* Merchant Switcher */}
+        <div className="border-b border-primary p-3">
+          <select
+            className="w-full bg-transparent font-data-md text-[10px] uppercase tracking-wider border border-primary p-2 cursor-pointer focus:outline-none"
+            value={currentMerchant?.id || ''}
+            onChange={(e) => switchMerchant(e.target.value)}
+          >
+            {merchants.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <nav className="flex flex-col flex-1">
           <Link className={getLinkClass('/dashboard')} to="/dashboard">
             <span className="material-symbols-outlined text-[18px]">dashboard</span>
