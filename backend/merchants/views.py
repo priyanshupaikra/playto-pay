@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Merchant, BankAccount
 from .serializers import (
@@ -14,10 +15,12 @@ from ledger.serializers import LedgerEntrySerializer
 
 
 class MerchantListView(ListAPIView):
-    """GET /api/v1/merchants/ — list all merchants (for dev/seed)."""
-    queryset = Merchant.objects.all()
+    """GET /api/v1/merchants/ — list merchants owned by the authenticated user."""
     serializer_class = MerchantSerializer
     pagination_class = None  # No pagination for merchant list
+
+    def get_queryset(self):
+        return Merchant.objects.filter(user=self.request.user)
 
 
 class MerchantBalanceView(APIView):
@@ -25,7 +28,7 @@ class MerchantBalanceView(APIView):
 
     def get(self, request, merchant_id):
         try:
-            Merchant.objects.get(pk=merchant_id)
+            Merchant.objects.get(pk=merchant_id, user=request.user)
         except Merchant.DoesNotExist:
             return Response(
                 {'error': 'MERCHANT_NOT_FOUND'},
@@ -42,6 +45,9 @@ class MerchantLedgerView(ListAPIView):
 
     def get_queryset(self):
         merchant_id = self.kwargs['merchant_id']
+        # Verify ownership
+        if not Merchant.objects.filter(pk=merchant_id, user=self.request.user).exists():
+            return []
         return LedgerService.get_ledger_with_running_balance(merchant_id)
 
 
@@ -58,6 +64,12 @@ class BankAccountListCreateView(APIView):
                 {'error': 'merchant_id query param is required.'},
                 status=status.HTTP_400_BAD_REQUEST
             )
+        # Only allow access to user's own merchants
+        if not Merchant.objects.filter(pk=merchant_id, user=request.user).exists():
+            return Response(
+                {'error': 'MERCHANT_NOT_FOUND'},
+                status=status.HTTP_404_NOT_FOUND
+            )
         accounts = BankAccount.objects.filter(merchant_id=merchant_id)
         serializer = BankAccountSerializer(accounts, many=True)
         return Response(serializer.data)
@@ -73,7 +85,7 @@ class BankAccountListCreateView(APIView):
             )
 
         try:
-            merchant = Merchant.objects.get(pk=merchant_id)
+            merchant = Merchant.objects.get(pk=merchant_id, user=request.user)
         except Merchant.DoesNotExist:
             return Response(
                 {'error': 'MERCHANT_NOT_FOUND'},
@@ -98,6 +110,13 @@ class BankAccountDeleteView(APIView):
         try:
             account = BankAccount.objects.get(pk=account_id)
         except BankAccount.DoesNotExist:
+            return Response(
+                {'error': 'BANK_ACCOUNT_NOT_FOUND'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Verify ownership through merchant
+        if account.merchant.user != request.user:
             return Response(
                 {'error': 'BANK_ACCOUNT_NOT_FOUND'},
                 status=status.HTTP_404_NOT_FOUND
