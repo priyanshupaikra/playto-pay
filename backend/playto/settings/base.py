@@ -5,6 +5,8 @@ All environment-specific settings inherit from this file.
 import os
 from pathlib import Path
 
+from datetime import timedelta
+
 import environ
 from celery.schedules import crontab
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     # Local apps
+    'accounts.apps.AccountsConfig',
     'merchants.apps.MerchantsConfig',
     'payouts.apps.PayoutsConfig',
     'ledger.apps.LedgerConfig',
@@ -119,6 +122,21 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+# ─── Simple JWT ───────────────────────────────────────────────────────────────
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
