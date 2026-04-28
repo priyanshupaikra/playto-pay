@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&amp;family=Lora:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface": "#1b1b1b",
+                        "surface": "#f9f9f9",
+                        "tertiary-container": "#1b1b1b",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "surface-tint": "#5e5e5e",
+                        "inverse-primary": "#c6c6c6",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary": "#000000",
+                        "inverse-surface": "#303030",
+                        "background": "#f9f9f9",
+                        "outline-variant": "#cfc4c5",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-container": "#dfe0e0",
+                        "on-secondary-container": "#616363",
+                        "on-background": "#1b1b1b",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "outline": "#7e7576",
+                        "primary-fixed": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "secondary": "#5d5f5f",
+                        "on-tertiary-container": "#848484",
+                        "surface-dim": "#dadada"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "gutter": "0px",
+                        "container-margin": "40px",
+                        "row-height": "64px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "status-processing": ["JetBrains Mono"],
+                        "data-md": ["JetBrains Mono"],
+                        "status-pending": ["JetBrains Mono"],
+                        "ui-label-reg": ["Inter"],
+                        "editorial-display": ["Lora"],
+                        "ui-label-bold": ["Inter"],
+                        "editorial-h2": ["Lora"],
+                        "status-completed": ["JetBrains Mono"],
+                        "data-lg": ["JetBrains Mono"],
+                        "editorial-h1": ["Lora"]
+                    },
+                    "fontSize": {
+                        "status-processing": ["12px", {"fontWeight": "400"}],
+                        "data-md": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "status-pending": ["12px", {"fontWeight": "400"}],
+                        "ui-label-reg": ["14px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "editorial-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "ui-label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "editorial-h2": ["24px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "status-completed": ["12px", {"fontWeight": "700"}],
+                        "data-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "editorial-h1": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Overriding any default border radius for Brutalist consistency */
+        * { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="bg-white text-black font-['Inter'] antialiased">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="flex justify-between items-center w-full px-8 h-16 bg-white border-b border-black docked full-width top-0">
+<div class="text-2xl font-black uppercase tracking-widest text-black">PLAYTO</div>
+<div class="flex gap-8">
+<span class="font-['Inter'] font-bold uppercase tracking-tighter text-black underline decoration-black decoration-2 underline-offset-8">LOGIN</span>
+<span class="font-['Inter'] font-bold uppercase tracking-tighter text-gray-400">SUPPORT</span>
+</div>
+</header>
+<main class="min-h-[calc(100vh-64px-52px)] flex flex-col md:flex-row">
+<!-- LEFT COLUMN: Identity & Context -->
+<section class="flex-1 flex flex-col justify-between p-12 border-r border-black">
+<div>
+<span class="font-data-md text-data-md text-black uppercase tracking-widest block mb-4">MERCHANT PORTAL</span>
+<h1 class="font-editorial-display text-editorial-display text-black mb-12">Sign Back In.</h1>
+<div class="space-y-0 border-t border-black max-w-md">
+<div class="py-6 border-b border-black flex justify-between items-baseline group hover:bg-black hover:text-white transition-none">
+<div>
+<p class="font-data-md text-data-md uppercase">SYSTEM_UPTIME</p>
+<p class="font-status-completed text-status-completed">99.998%</p>
+</div>
+<span class="font-status-completed text-status-completed">ONLINE</span>
+</div>
+<div class="py-6 border-b border-black flex justify-between items-baseline group hover:bg-black hover:text-white transition-none">
+<div>
+<p class="font-data-md text-data-md uppercase">LAST_LOGIN</p>
+<p class="font-status-pending text-status-pending">12 OCT 2024 — 14:32 UTC</p>
+</div>
+<span class="font-status-pending text-status-pending italic">PARIS_HQ</span>
+</div>
+<div class="py-6 border-b border-black flex justify-between items-baseline group hover:bg-black hover:text-white transition-none">
+<div>
+<p class="font-data-md text-data-md uppercase">ACTIVE_NODES</p>
+<p class="font-status-processing text-status-processing italic">Processing 1,242 requests...</p>
+</div>
+<span class="material-symbols-outlined text-sm">hub</span>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<p class="font-data-md text-data-md opacity-50 max-w-xs leading-tight">
+                    PLAYTO FINANCIAL STRUCTURES PROVIDE UNCOMPROMISING DATA INTEGRITY FOR MODERN MERCHANT TRANSACTIONS.
+                </p>
+</div>
+</section>
+<!-- RIGHT COLUMN: Interaction -->
+<section class="flex-1 flex flex-col justify-center items-center p-8 md:p-24 bg-white">
+<div class="w-full max-w-md border border-black p-8 md:p-12">
+<div class="mb-10">
+<span class="font-data-md text-data-md uppercase tracking-widest text-black border-b border-black pb-1">MERCHANT LOGIN</span>
+</div>
+<form class="space-y-8">
+<!-- EMAIL FIELD -->
+<div class="space-y-2">
+<label class="font-ui-label-bold text-ui-label-bold uppercase block">EMAIL_ADDRESS</label>
+<input class="w-full bg-white border border-black p-4 font-data-md text-data-md focus:outline-none focus:ring-0 focus:border-black placeholder:opacity-30" placeholder="USER@PLAYTO.STRUCTURE" type="email"/>
+</div>
+<!-- PASSWORD FIELD -->
+<div class="space-y-2 relative">
+<label class="font-ui-label-bold text-ui-label-bold uppercase block">SECURE_CREDENTIAL</label>
+<div class="relative">
+<input class="w-full bg-white border border-black p-4 font-data-md text-data-md focus:outline-none focus:ring-0 focus:border-black placeholder:opacity-30" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 font-data-md text-xs uppercase underline hover:bg-black hover:text-white px-2 py-1 transition-none" type="button">SHOW</button>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4">
+<a class="font-data-md text-xs uppercase underline hover:bg-black hover:text-white transition-none" href="#">FORGOT PASSWORD</a>
+</div>
+<!-- SIGN IN BUTTON -->
+<button class="w-full bg-white border border-black text-black font-ui-label-bold text-ui-label-bold uppercase py-6 hover:bg-black hover:text-white transition-none flex items-center justify-center gap-4" type="submit">
+                        SIGN IN
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<div class="mt-12 pt-8 border-t border-black">
+<p class="font-data-md text-xs text-center opacity-50">
+                        ACCESS AUTHORIZED FOR REGISTERED MERCHANTS ONLY. ALL ATTEMPTS LOGGED.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="flex justify-between items-center w-full px-8 py-4 bg-white border-t border-black docked full-width bottom-0">
+<span class="font-['JetBrains_Mono'] text-xs uppercase text-black font-bold">© 2024 PLAYTO FINANCIAL STRUCTURES</span>
+<div class="flex gap-6">
+<a class="font-['JetBrains_Mono'] text-xs uppercase text-gray-500 hover:underline" href="#">TERMS</a>
+<a class="font-['JetBrains_Mono'] text-xs uppercase text-gray-500 hover:underline" href="#">PRIVACY</a>
+<a class="font-['JetBrains_Mono'] text-xs uppercase text-gray-500 hover:underline" href="#">SYSTEM_STATUS</a>
+</div>
+</footer>
+</body></html>
