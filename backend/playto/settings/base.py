@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Environment variables
 env = environ.Env(
     DEBUG=(bool, False),
-    ALLOWED_HOSTS=(list, ['localhost', '127.0.0.1', 'playto-pay-qrbv.onrender.com', '.onrender.com']),
+    ALLOWED_HOSTS=(list, ['localhost', '127.0.0.1', 'playto-pay-dtei.onrender.com', '.onrender.com']),
 )
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
@@ -142,7 +142,7 @@ SIMPLE_JWT = {
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 CORS_ALLOWED_ORIGINS = env.list(
     'CORS_ALLOWED_ORIGINS',
-    default=['http://localhost:5173', 'http://localhost:3000']
+    default=['http://localhost:5173', 'http://localhost:3000', 'https://playto-pay-1.onrender.com']
 )
 CORS_ALLOW_ALL_ORIGINS = env.bool('CORS_ALLOW_ALL_ORIGINS', default=False)
 

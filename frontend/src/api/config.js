@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// In production VITE_API_BASE_URL should be set to the full backend origin,
+// e.g. "https://playto-pay-dtei.onrender.com/api/v1".
+// In local dev the Vite proxy handles "/api/v1" → localhost:8000.
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
