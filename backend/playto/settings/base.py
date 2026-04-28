@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Environment variables
 env = environ.Env(
     DEBUG=(bool, False),
-    ALLOWED_HOSTS=(list, ['localhost', '127.0.0.1']),
+    ALLOWED_HOSTS=(list, ['localhost', '127.0.0.1', 'playto-pay-qrbv.onrender.com', '.onrender.com']),
 )
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
