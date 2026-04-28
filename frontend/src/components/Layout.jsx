@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useMerchant } from '../context/MerchantContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Layout() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { merchants, currentMerchant, switchMerchant, loading } = useMerchant();
+  const { logout, user } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const getLinkClass = (path, isMobile = false) => {
     const isActive = location.pathname.startsWith(path);
@@ -73,6 +81,22 @@ export default function Layout() {
             SETTINGS
           </Link>
         </nav>
+
+        {/* Logout Button */}
+        <div className="mt-auto border-t border-primary p-3">
+          {user && (
+            <div className="font-data-md text-[10px] uppercase tracking-wider opacity-50 mb-2 truncate">
+              {user.email || user.full_name}
+            </div>
+          )}
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-4 px-4 py-3 text-on-surface hover:bg-primary hover:text-on-primary font-data-md text-data-md text-xs uppercase tracking-tighter transition-colors"
+          >
+            <span className="material-symbols-outlined text-[18px]">logout</span>
+            LOGOUT
+          </button>
+        </div>
       </div>
 
       {/* Main Content Canvas */}
