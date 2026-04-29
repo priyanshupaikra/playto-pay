@@ -98,12 +98,12 @@ export default function PayoutHistory() {
       {/* Data Table */}
       <div className="w-full border border-primary font-data-md text-data-md">
         {/* Table Header */}
-        <div className="grid grid-cols-5 bg-surface-container-lowest border-b border-primary p-4 text-xs font-ui-label-bold text-ui-label-bold uppercase">
+        <div className="grid grid-cols-3 md:grid-cols-5 bg-surface-container-lowest border-b border-primary p-4 text-xs font-ui-label-bold text-ui-label-bold uppercase">
           <div>ID</div>
-          <div>BANK ACCOUNT</div>
+          <div className="hidden md:block">BANK ACCOUNT</div>
           <div>AMOUNT</div>
           <div>STATUS</div>
-          <div className="text-right">DATE</div>
+          <div className="text-right hidden md:block">DATE</div>
         </div>
 
         {/* Rows */}
@@ -117,21 +117,21 @@ export default function PayoutHistory() {
               <Link
                 to={`/payouts/${payout.id}`}
                 key={payout.id}
-                className={`grid grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group ${isFailed ? 'opacity-50' : ''}`}
+                className={`grid grid-cols-3 md:grid-cols-5 items-center border-b border-primary border-opacity-10 p-4 hover:bg-primary hover:text-on-primary transition-colors cursor-pointer group ${isFailed ? 'opacity-50' : ''}`}
               >
-                <div className={`truncate pr-4 ${isFailed ? 'line-through' : ''}`}>
+                <div className={`truncate pr-2 text-xs md:text-sm ${isFailed ? 'line-through' : ''}`}>
                   {String(payout.id).slice(0, 8)}
                 </div>
-                <div className={`truncate pr-4 ${isFailed ? 'line-through' : ''}`}>
+                <div className={`truncate pr-4 hidden md:block ${isFailed ? 'line-through' : ''}`}>
                   {payout.bank_account?.bank_name || '—'} ****{payout.bank_account?.last4 || ''}
                 </div>
-                <div className={isFailed ? 'line-through' : ''}>
+                <div className={`text-xs md:text-sm ${isFailed ? 'line-through' : ''}`}>
                   {formatPaise(payout.amount_paise)}
                 </div>
-                <div className={getStatusClass(payout.status)}>
+                <div className={`text-xs md:text-sm ${getStatusClass(payout.status)}`}>
                   {payout.status === 'processing' ? 'Processing...' : payout.status.toUpperCase()}
                 </div>
-                <div className="text-right opacity-70 group-hover:opacity-100">
+                <div className="text-right opacity-70 group-hover:opacity-100 hidden md:block">
                   {formatDate(payout.created_at)}
                 </div>
               </Link>
