@@ -4,6 +4,6 @@ ASGI config for playto project.
 import os
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'playto.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'playto.settings.production')
 
 application = get_asgi_application()

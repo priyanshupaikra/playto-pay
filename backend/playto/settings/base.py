@@ -145,6 +145,13 @@ CORS_ALLOWED_ORIGINS = env.list(
     default=['http://localhost:5173', 'http://localhost:3000', 'https://playto-pay-1.onrender.com']
 )
 CORS_ALLOW_ALL_ORIGINS = env.bool('CORS_ALLOW_ALL_ORIGINS', default=False)
+CORS_ALLOW_CREDENTIALS = True
+
+# Extend the default django-cors-headers allowed headers with our custom ones
+from corsheaders.defaults import default_headers
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'idempotency-key',
+]
 
 # ─── Celery ───────────────────────────────────────────────────────────────────
 CELERY_BROKER_URL = env('REDIS_URL', default='redis://localhost:6379/0')
