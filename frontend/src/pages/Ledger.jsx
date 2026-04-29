@@ -80,22 +80,22 @@ export default function Ledger() {
       </header>
 
       {/* Summary Bar */}
-      <section className="brutalist-border-t brutalist-border-b grid grid-cols-3 mb-16">
-        <div className="p-8 brutalist-border-r flex flex-col justify-between h-32 hover-invert transition-none">
+      <section className="brutalist-border-t brutalist-border-b grid grid-cols-1 sm:grid-cols-3 mb-16">
+        <div className="p-6 sm:p-8 brutalist-border-b sm:brutalist-border-b-0 sm:brutalist-border-r flex flex-col justify-between sm:h-32 hover-invert transition-none">
           <span className="font-ui-label-bold text-ui-label-bold uppercase tracking-wider">TOTAL CREDITS</span>
-          <span className="font-data-lg text-data-lg font-bold">
+          <span className="font-data-lg text-data-lg font-bold mt-2 sm:mt-0">
             + {formatPaise(balance?.total_credits_paise || 0)}
           </span>
         </div>
-        <div className="p-8 brutalist-border-r flex flex-col justify-between h-32 hover-invert transition-none">
+        <div className="p-6 sm:p-8 brutalist-border-b sm:brutalist-border-b-0 sm:brutalist-border-r flex flex-col justify-between sm:h-32 hover-invert transition-none">
           <span className="font-ui-label-bold text-ui-label-bold uppercase tracking-wider">TOTAL DEBITS</span>
-          <span className="font-data-lg text-data-lg">
+          <span className="font-data-lg text-data-lg mt-2 sm:mt-0">
             - {formatPaise(balance?.total_debits_paise || 0)}
           </span>
         </div>
-        <div className="p-8 flex flex-col justify-between h-32 hover-invert transition-none">
+        <div className="p-6 sm:p-8 flex flex-col justify-between sm:h-32 hover-invert transition-none">
           <span className="font-ui-label-bold text-ui-label-bold uppercase tracking-wider">NET BALANCE</span>
-          <span className="font-data-lg text-data-lg font-bold">
+          <span className="font-data-lg text-data-lg font-bold mt-2 sm:mt-0">
             {balance?.available_formatted || '₹0.00'}
           </span>
         </div>
@@ -105,12 +105,12 @@ export default function Ledger() {
       <section className="mb-8">
         <div className="w-full">
           {/* Table Header */}
-          <div className="grid grid-cols-5 border-b-2 border-black pb-4 mb-2 font-ui-label-bold text-ui-label-bold uppercase tracking-wider">
+          <div className="grid grid-cols-3 md:grid-cols-5 border-b-2 border-black pb-4 mb-2 font-ui-label-bold text-ui-label-bold uppercase tracking-wider text-xs">
             <div className="pl-4">DATE</div>
             <div>TYPE</div>
             <div className="text-right">AMOUNT</div>
-            <div className="text-right">RUNNING BALANCE</div>
-            <div className="text-right pr-4">LINKED PAYOUT</div>
+            <div className="text-right hidden md:block">RUNNING BALANCE</div>
+            <div className="text-right pr-4 hidden md:block">LINKED PAYOUT</div>
           </div>
 
           {entries.length === 0 && (
@@ -122,19 +122,19 @@ export default function Ledger() {
             return (
               <div
                 key={entry.id}
-                className={`grid grid-cols-5 h-[64px] items-center brutalist-border-b hover-invert transition-none cursor-pointer ${isDebit ? 'opacity-80' : ''}`}
+                className={`grid grid-cols-3 md:grid-cols-5 min-h-[56px] md:h-[64px] items-center brutalist-border-b hover-invert transition-none cursor-pointer py-3 md:py-0 ${isDebit ? 'opacity-80' : ''}`}
               >
-                <div className="pl-4 font-data-md text-data-md">{formatDateFull(entry.created_at)}</div>
-                <div className="font-data-md text-data-md">
+                <div className="pl-4 font-data-md text-data-md text-xs md:text-sm">{formatDateFull(entry.created_at)}</div>
+                <div className="font-data-md text-data-md text-xs md:text-sm">
                   {entry.entry_type === 'CREDIT' ? 'DEPOSIT' : 'PAYOUT'}
                 </div>
-                <div className={`text-right font-data-md text-data-md ${isDebit ? 'font-light opacity-80' : 'font-bold'}`}>
+                <div className={`text-right font-data-md text-data-md text-xs md:text-sm ${isDebit ? 'font-light opacity-80' : 'font-bold'}`}>
                   {isDebit ? '- ' : '+ '}{formatPaise(entry.amount_paise)}
                 </div>
-                <div className="text-right font-data-md text-data-md">
+                <div className="text-right font-data-md text-data-md hidden md:block">
                   {entry.running_balance_paise != null ? formatPaise(entry.running_balance_paise) : '—'}
                 </div>
-                <div className="text-right pr-4">
+                <div className="text-right pr-4 hidden md:block">
                   {entry.payout_id ? (
                     <Link
                       className="font-data-md text-data-md underline underline-offset-4"
@@ -153,8 +153,8 @@ export default function Ledger() {
       </section>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center pt-8">
-        <div className="font-ui-label-bold text-ui-label-bold uppercase tracking-widest">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-8 gap-4">
+        <div className="font-ui-label-bold text-ui-label-bold uppercase tracking-widest text-xs">
           {totalCount > 0 ? `SHOWING ${startEntry}-${endEntry} OF ${totalCount} ENTRIES` : 'NO ENTRIES'}
         </div>
         <div className="flex space-x-4">
