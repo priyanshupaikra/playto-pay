@@ -18,22 +18,39 @@ export function MerchantProvider({ children }) {
       setMerchants([]);
       setCurrentMerchant(null);
       setLoading(false);
+      sessionStorage.removeItem('merchants');
       return;
     }
 
-    setLoading(true);
+    // Use cached merchants for instant render
+    let hasCachedData = false;
+    const cached = sessionStorage.getItem('merchants');
+    if (cached) {
+      try {
+        const list = JSON.parse(cached);
+        setMerchants(list);
+        if (list.length > 0) setCurrentMerchant(list[0]);
+        hasCachedData = true;
+        setLoading(false); // Unblock UI immediately
+      } catch { /* ignore parse errors */ }
+    }
+
+    if (!hasCachedData) setLoading(true);
+
+    // Fetch fresh data (background refresh if cached)
     getMerchants()
       .then((data) => {
-        // data could be paginated or a plain array
         const list = data.results || data;
         setMerchants(list);
+        sessionStorage.setItem('merchants', JSON.stringify(list));
         if (list.length > 0) {
-          // Default to first merchant
           setCurrentMerchant(list[0]);
         }
       })
       .catch((err) => console.error('Failed to load merchants:', err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (!hasCachedData) setLoading(false);
+      });
   }, [isAuthenticated, authLoading]);
 
   const switchMerchant = (merchantId) => {

@@ -102,7 +102,51 @@ export default function Dashboard() {
   const pendingCount = recentPayouts.filter((p) => p.status === 'pending' || p.status === 'processing').length;
 
   if (loading) {
-    return <div className="font-data-lg text-data-lg uppercase tracking-widest animate-pulse p-12">Loading dashboard...</div>;
+    return (
+      <>
+        {/* Skeleton Hero */}
+        <section className="flex flex-col md:flex-row border-b border-primary w-full animate-pulse">
+          <div className="w-full md:w-1/2 p-4 md:p-12 border-b md:border-b-0 md:border-r border-primary flex flex-col justify-center">
+            <div className="h-16 bg-surface-container-highest rounded w-3/4 mb-12"></div>
+            <div className="border border-primary p-6">
+              <div className="h-4 bg-surface-container-highest rounded w-1/3 mb-4"></div>
+              <div className="h-12 bg-surface-container-highest rounded w-1/2 mb-2"></div>
+              <div className="h-4 bg-surface-container-highest rounded w-2/5"></div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2">
+            {[1,2,3,4].map(i => (
+              <div key={i} className="border-b sm:border-r border-primary p-8 min-h-[200px] flex flex-col justify-between">
+                <div className="h-3 bg-surface-container-highest rounded w-8"></div>
+                <div>
+                  <div className="h-5 bg-surface-container-highest rounded w-2/3 mb-2"></div>
+                  <div className="h-8 bg-surface-container-highest rounded w-1/2"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        {/* Skeleton Table */}
+        <section className="flex flex-col md:flex-row flex-1 animate-pulse">
+          <div className="w-full md:w-[60%] flex flex-col">
+            <div className="border-b border-primary p-4 bg-primary"><div className="h-5 bg-on-primary/20 rounded w-1/3"></div></div>
+            {[1,2,3,4].map(i => (
+              <div key={i} className="grid grid-cols-4 border-b border-primary p-4 gap-4">
+                <div className="h-4 bg-surface-container-highest rounded"></div>
+                <div className="h-4 bg-surface-container-highest rounded col-span-2"></div>
+                <div className="h-4 bg-surface-container-highest rounded"></div>
+              </div>
+            ))}
+          </div>
+          <div className="w-full md:w-[40%] border-l md:border-l-primary p-8">
+            <div className="h-6 bg-surface-container-highest rounded w-1/2 mb-6"></div>
+            <div className="h-12 bg-surface-container-highest rounded mb-6"></div>
+            <div className="h-12 bg-surface-container-highest rounded mb-6"></div>
+            <div className="h-12 bg-surface-container-highest rounded"></div>
+          </div>
+        </section>
+      </>
+    );
   }
 
   return (

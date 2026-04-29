@@ -42,7 +42,31 @@ export default function Ledger() {
   const endEntry = Math.min(page * pageSize, totalCount);
 
   if (loading) {
-    return <div className="font-data-lg text-data-lg uppercase tracking-widest animate-pulse p-12">Loading ledger...</div>;
+    return (
+      <div className="animate-pulse">
+        <div className="mb-12">
+          <div className="h-14 bg-surface-container-highest rounded w-1/4 mb-4"></div>
+          <div className="h-5 bg-surface-container-highest rounded w-2/3"></div>
+        </div>
+        <div className="brutalist-border-t brutalist-border-b grid grid-cols-3 mb-16">
+          {[1,2,3].map(i => (
+            <div key={i} className="p-8 brutalist-border-r h-32 flex flex-col justify-between">
+              <div className="h-3 bg-surface-container-highest rounded w-1/2"></div>
+              <div className="h-8 bg-surface-container-highest rounded w-2/3"></div>
+            </div>
+          ))}
+        </div>
+        {[1,2,3,4,5].map(i => (
+          <div key={i} className="grid grid-cols-5 h-[64px] items-center brutalist-border-b gap-4 px-4">
+            <div className="h-4 bg-surface-container-highest rounded"></div>
+            <div className="h-4 bg-surface-container-highest rounded"></div>
+            <div className="h-4 bg-surface-container-highest rounded"></div>
+            <div className="h-4 bg-surface-container-highest rounded"></div>
+            <div className="h-4 bg-surface-container-highest rounded"></div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (

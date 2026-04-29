@@ -56,7 +56,29 @@ export default function PayoutHistory() {
   };
 
   if (loading) {
-    return <div className="font-data-lg text-data-lg uppercase tracking-widest animate-pulse p-12">Loading payouts...</div>;
+    return (
+      <div className="animate-pulse">
+        <div className="flex justify-between items-end mb-12 border-b border-primary pb-8">
+          <div className="h-14 bg-surface-container-highest rounded w-1/3"></div>
+          <div className="h-4 bg-surface-container-highest rounded w-1/6"></div>
+        </div>
+        <div className="flex gap-8 mb-8">
+          {[1,2,3,4,5].map(i => (
+            <div key={i} className="h-4 bg-surface-container-highest rounded w-16"></div>
+          ))}
+        </div>
+        <div className="w-full border border-primary">
+          <div className="grid grid-cols-5 border-b border-primary p-4 gap-4">
+            {[1,2,3,4,5].map(i => <div key={i} className="h-3 bg-surface-container-highest rounded"></div>)}
+          </div>
+          {[1,2,3,4,5].map(i => (
+            <div key={i} className="grid grid-cols-5 border-b border-primary p-4 gap-4">
+              {[1,2,3,4,5].map(j => <div key={j} className="h-4 bg-surface-container-highest rounded"></div>)}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (

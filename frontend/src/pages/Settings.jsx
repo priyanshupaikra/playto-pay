@@ -42,7 +42,31 @@ export default function Settings() {
     } finally { setSaving(false); }
   };
 
-  if (loading) return <div className="animate-pulse p-12 font-data-lg uppercase">Loading...</div>;
+  if (loading) return (
+    <div className="animate-pulse">
+      <header className="w-full border-b border-primary p-8 md:p-12">
+        <div className="h-14 bg-surface-container-highest rounded w-1/4"></div>
+      </header>
+      <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
+        <div className="lg:col-span-3 border-r border-primary hidden lg:block">
+          {[1,2,3].map(i => <div key={i} className="p-4 border-b border-primary"><div className="h-4 bg-surface-container-highest rounded w-2/3"></div></div>)}
+        </div>
+        <div className="lg:col-span-9 p-6 md:p-8">
+          <div className="h-6 bg-surface-container-highest rounded w-1/3 mb-4"></div>
+          <div className="h-4 bg-surface-container-highest rounded w-2/3 mb-8"></div>
+          {[1,2].map(i => (
+            <div key={i} className="border-b border-primary p-6 flex justify-between items-center">
+              <div className="flex flex-col gap-2 flex-1">
+                <div className="h-5 bg-surface-container-highest rounded w-1/3"></div>
+                <div className="h-4 bg-surface-container-highest rounded w-1/2"></div>
+              </div>
+              <div className="h-4 bg-surface-container-highest rounded w-16"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>

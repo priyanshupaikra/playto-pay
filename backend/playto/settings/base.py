@@ -88,6 +88,9 @@ DATABASES = {
 DATABASES['default']['TEST'] = {
     'NAME': DATABASES['default'].get('NAME', 'neondb'),
 }
+# Keep DB connections alive for 10 minutes to avoid NeonDB cold starts
+DATABASES['default']['CONN_MAX_AGE'] = 600
+DATABASES['default']['CONN_HEALTH_CHECKS'] = True
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

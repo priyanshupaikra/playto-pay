@@ -9,14 +9,28 @@ export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true); // true while checking stored token
 
-  // On mount, check if we have a stored token and validate it
+  // On mount, use cached user instantly then validate in background
   useEffect(() => {
     const token = localStorage.getItem('access_token');
     if (token) {
+      // Use cached user data for instant render
+      const cachedUser = localStorage.getItem('user');
+      let hasCachedData = false;
+      if (cachedUser) {
+        try {
+          setUser(JSON.parse(cachedUser));
+          setIsAuthenticated(true);
+          hasCachedData = true;
+          setLoading(false); // Unblock UI immediately
+        } catch { /* ignore parse errors */ }
+      }
+
+      // Validate token in background — don't block UI if cached
       authApi
         .getMe()
         .then((data) => {
           setUser(data.user);
+          localStorage.setItem('user', JSON.stringify(data.user));
           setIsAuthenticated(true);
         })
         .catch(() => {
@@ -27,7 +41,9 @@ export function AuthProvider({ children }) {
           setIsAuthenticated(false);
           setUser(null);
         })
-        .finally(() => setLoading(false));
+        .finally(() => {
+          if (!hasCachedData) setLoading(false);
+        });
     } else {
       setLoading(false);
     }
@@ -57,6 +73,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('user');
+    sessionStorage.removeItem('merchants');
     setUser(null);
     setIsAuthenticated(false);
   }, []);
