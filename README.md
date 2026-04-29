@@ -62,8 +62,6 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-The API will be available at **http://127.0.0.1:8000/**
-
 ---
 
 ## Frontend Setup
@@ -82,8 +80,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-The app will be available at **http://localhost:5173/**
 
 ---
 
