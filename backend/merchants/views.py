@@ -1,3 +1,5 @@
+from django.views.decorators.cache import cache_control
+from django.utils.decorators import method_decorator
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -14,6 +16,7 @@ from .services import LedgerService
 from ledger.serializers import LedgerEntrySerializer
 
 
+@method_decorator(cache_control(max_age=60, private=True), name='get')
 class MerchantListView(ListAPIView):
     """GET /api/v1/merchants/ — list merchants owned by the authenticated user."""
     serializer_class = MerchantSerializer
@@ -35,7 +38,14 @@ class MerchantBalanceView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
+        # Check Redis cache first
+        from playto.cache import get_cached_balance, set_cached_balance
+        cached = get_cached_balance(merchant_id)
+        if cached:
+            return Response(cached)
+
         balance = LedgerService.get_balance(merchant_id)
+        set_cached_balance(merchant_id, balance)
         return Response(balance)
 
 
@@ -124,3 +134,50 @@ class BankAccountDeleteView(APIView):
 
         account.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class DashboardView(APIView):
+    """
+    GET /api/v1/merchants/<id>/dashboard/
+    Combined endpoint: balance + recent ledger + recent payouts + bank accounts.
+    Reduces 4 HTTP round-trips to 1.
+    """
+
+    def get(self, request, merchant_id):
+        try:
+            Merchant.objects.get(pk=merchant_id, user=request.user)
+        except Merchant.DoesNotExist:
+            return Response(
+                {'error': 'MERCHANT_NOT_FOUND'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Balance (uses Redis cache if available)
+        from playto.cache import get_cached_balance, set_cached_balance
+        balance = get_cached_balance(merchant_id)
+        if not balance:
+            balance = LedgerService.get_balance(merchant_id)
+            set_cached_balance(merchant_id, balance)
+
+        # Recent ledger entries (last 4)
+        from ledger.models import LedgerEntry
+        recent_ledger = LedgerEntry.objects.filter(
+            merchant_id=merchant_id
+        ).order_by('-created_at')[:4]
+
+        # Recent payouts (last 5)
+        from payouts.models import Payout
+        from payouts.serializers import PayoutListSerializer
+        recent_payouts = Payout.objects.filter(
+            merchant_id=merchant_id
+        ).select_related('bank_account', 'idempotency_key').order_by('-created_at')[:5]
+
+        # Bank accounts
+        bank_accounts = BankAccount.objects.filter(merchant_id=merchant_id)
+
+        return Response({
+            'balance': balance,
+            'recent_ledger': LedgerEntrySerializer(recent_ledger, many=True).data,
+            'recent_payouts': PayoutListSerializer(recent_payouts, many=True).data,
+            'bank_accounts': BankAccountSerializer(bank_accounts, many=True).data,
+        })

@@ -29,6 +29,10 @@ class LedgerEntry(models.Model):
     class Meta:
         db_table = 'ledger_entries'
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['merchant', 'entry_type'], name='idx_ledger_merchant_type'),
+            models.Index(fields=['merchant', '-created_at'], name='idx_ledger_merchant_date'),
+        ]
 
     def __str__(self):
         return f"{self.entry_type} {self.amount_paise} paise — {self.merchant}"

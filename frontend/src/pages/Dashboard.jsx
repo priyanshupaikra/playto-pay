@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useMerchant } from '../context/MerchantContext';
-import { getBalance, getLedger } from '../api/merchants';
+import { getBalance } from '../api/merchants';
 import { getPayouts, createPayout } from '../api/payouts';
-import { getBankAccounts } from '../api/bankAccounts';
+import { getDashboard } from '../api/dashboard';
 import { formatPaise, formatDate, generateIdempotencyKey, truncateId } from '../utils/format';
 
 export default function Dashboard() {
@@ -25,19 +25,15 @@ export default function Dashboard() {
 
   const fetchData = useCallback(() => {
     if (!merchantId) return;
-    Promise.all([
-      getBalance(merchantId),
-      getLedger(merchantId, 1),
-      getPayouts(merchantId),
-      getBankAccounts(merchantId),
-    ])
-      .then(([bal, ledger, payouts, banks]) => {
-        setBalance(bal);
-        setRecentEntries((ledger.results || ledger).slice(0, 4));
-        setRecentPayouts(payouts.slice(0, 5));
-        setBankAccounts(banks);
-        if (banks.length > 0 && !selectedBank) {
-          setSelectedBank(banks[0].id);
+    // Single API call replaces 4 parallel calls
+    getDashboard(merchantId)
+      .then((data) => {
+        setBalance(data.balance);
+        setRecentEntries(data.recent_ledger);
+        setRecentPayouts(data.recent_payouts);
+        setBankAccounts(data.bank_accounts);
+        if (data.bank_accounts.length > 0 && !selectedBank) {
+          setSelectedBank(data.bank_accounts[0].id);
         }
       })
       .catch(console.error)

@@ -79,6 +79,11 @@ class Payout(models.Model):
     class Meta:
         db_table = 'payouts'
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['merchant', 'status'], name='idx_payout_merchant_status'),
+            models.Index(fields=['merchant', '-created_at'], name='idx_payout_merchant_date'),
+            models.Index(fields=['status', 'processing_at'], name='idx_payout_stale'),
+        ]
 
     def __str__(self):
         return f"Payout {self.id} — {self.status} — {self.amount_paise} paise"

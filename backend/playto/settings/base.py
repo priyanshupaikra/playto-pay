@@ -156,6 +156,28 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'idempotency-key',
 ]
 
+# ─── Cache (Redis) ────────────────────────────────────────────────────────────
+# Reuse the same Redis instance as Celery, but on DB 1 for cache isolation.
+# Falls back to in-memory cache if Redis is unavailable (local dev).
+_redis_url = env('REDIS_URL', default='redis://localhost:6379/0')
+if _redis_url and _redis_url != 'redis://localhost:6379/0':
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': _redis_url.replace('/0', '/1') if '/0' in _redis_url else _redis_url,
+            'KEY_PREFIX': 'playto',
+            'TIMEOUT': 300,
+        }
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'KEY_PREFIX': 'playto',
+            'TIMEOUT': 300,
+        }
+    }
+
 # ─── Celery ───────────────────────────────────────────────────────────────────
 CELERY_BROKER_URL = env('REDIS_URL', default='redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = 'django-db'

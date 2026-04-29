@@ -178,6 +178,10 @@ class PayoutService:
                 f"Will be picked up by retry_stale_payouts."
             )
 
+        # Invalidate cached balance after funds are held
+        from playto.cache import invalidate_balance
+        invalidate_balance(merchant_id)
+
         return response_data, 201
 
     @staticmethod
@@ -242,5 +246,9 @@ class PayoutService:
                 event=new_status.upper(),
                 description=_event_description(new_status, failure_reason)
             )
+
+            # Invalidate cached balance after status change
+            from playto.cache import invalidate_balance
+            invalidate_balance(str(payout.merchant_id))
 
             return payout
